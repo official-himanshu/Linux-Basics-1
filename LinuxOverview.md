@@ -1,11 +1,12 @@
-What is a Linux?
+# What is a Linux?
 
 => Linux is an open-source operating system like other operating systems such as Microsoft Windows, Apple Mac OS, iOS, Google android, etc.
 => An operating system is a software that enables the communication between computer hardware and software. 
    It conveys input to get processed by the processor and brings output to the hardware to display it. This is the basic function of an operating system.
    Although it performs many other important tasks, let's not talk about that.
+**********************************************************************************
 
-Why use Linux?
+# Why use Linux?
 
 => So there are various features of Linux systems that make it completely different and one of the most used operating systems. 
  -Multiuser capability: Multiple users can access the same system resources like memory, hard disk, etc. But they have to use different terminals to operate.
@@ -18,13 +19,17 @@ Why use Linux?
  -Application support: It has its own software repository from where users can download and install many applications.
  -File System: Provides hierarchical file system in which files and directories are arranged.
  -Open Source: Linux code is freely available to all and is a community based development project.
+ 
+ *********************************************************************************
 
-How to use linux?
+# How to use linux?
 => We can use Linux through an interactive user interface as well as from the terminal (Command Line Interface). 
 Different distributions have a slightly different user interface but almost all the commands will have the same behavior for all the distributions.
 To run Linux from the terminal, press the "CTRL+ALT+T" keys. And, to explore its functionality, press the application button given on the left down corner of your desktop.
 
-How does a linux system boot up?
+*********************************************************************************
+
+# How does a linux system boot up?
 => 1. BIOS
 BIOS stands for Basic Input/Output System. In simple terms, the BIOS loads and executes the Master Boot Record (MBR) boot loader.
 
@@ -72,3 +77,56 @@ Modern Linux systems use systemmd to choose a run level instead
 
 => 6. Runlevel programs
 Depending on which Linux distribution you have installed, you may be able to see different services getting started. For example, you might catch starting sendmail …. OK.
+
+*********************************************************************************
+
+# What is "init" System ?
+=> In Linux, init is a abbreviation for Initialization. The init is a daemon process which starts as soon as the computer starts and continue running till, it is shutdown. In-fact init is the first process that starts when a computer boots, making it the parent of all other running processes directly or indirectly and hence typically it is assigned “pid=1“.
+
+=> Init is the parent of all processes with PID of "1". Group of process are predefined to start after init process and this processes are known as run level.
+ it can be seen by the command as--
+  ps -ef | head
+=> Run levels is the state of init where a group of process are defined to start at the startup of OS. We also can setup our own custom run levels.
+
+*********************************************************************************
+
+# Difference between initd and systemd?
+=> In Linux, init is a abbreviation for Initialization. The init is a daemon process which starts as soon as the computer starts and continue running till, it is shutdown. In-fact init is the first process that starts when a computer boots, making it the parent of all other running processes directly or indirectly and hence typically it is assigned “pid=1“.
+=> If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“.
+=> 
+systemd – A init replacement daemon designed to start process in parallel, implemented in a number of standard distribution – Fedora, OpenSuSE, Arch, RHEL, CentOS, etc.
+=> A systemd is a System Management Daemon named with UNIX convention to add ‘d‘ at the end of daemon. So, that they can be easily recognized. Initially it was released under GNU General Public License, but now the releases are made under GNU Lesser General Public License. Similar to init, systemd is the parent of all other processes directly or indirectly and is the first process that starts at boot hence typically assigned a “pid=1“.
+
+A systemd, may refer to all the packages, utilities and libraries around daemon. It was designed to overcome the shortcomings of init. It itself is a background processes which is designed to start processes in parallel, thus reducing the boot time and computational overhead. It has a lot other features as compared to init.
+
+
+*********************************************************************************
+
+
+# Why there was a need to replace init?
+=> A init process starts serially i.e., one task starts only after the last task startup was successful and it was loaded in the memory. This often resulted into delayed and long booting time. However, systemd was not designed for speed but for getting the things done neatly which in turns avoid all the UN-necessary delay.
+********************************************************
+=> Features of systemd
+Clean, stateforward and efficient design.
+Simpler boot process.
+Concurrent and parallel processing at boot.
+Better API.
+Simple Unit Syntax.
+Ability to remove optional components.
+Low memory footprints.
+Improved technique to express dependencies.
+Initialization instruction written in config file and not in shell script.
+Make use of Unix Domain Socket.
+
+
+
+
+
+
+
+
+
+# References 
+-https://www.javatpoint.com/what-is-linux
+-https://www.freecodecamp.org/news/the-linux-booting-process-6-steps-described-in-detail/
+-https://www.tecmint.com/systemd-replaces-init-in-linux/
