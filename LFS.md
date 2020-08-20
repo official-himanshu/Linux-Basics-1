@@ -91,3 +91,14 @@ XFS: old file system and works slowly with small files.
 Btrfs: made by Oracle. It is not stable as Ext in some distros, but you can say that it is a replacement for it if you have to. It has a good performance.
 
 You may notice From the comparison above that Ext4 is the best Linux File System
+
+# Naming file system conventions
+1. All file names are case sensitive. So filename vivek.txt Vivek.txt VIVEK.txt all are three different files.
+2. You can use upper and lowercase letters, numbers, “.” (dot), and “_” (underscore) symbols.
+3. You can use other special characters such as blank space, but they are hard to use and it is better to avoid them.
+4. In short, filenames may contain any character except / (root directory), which is reserved as the separator between files and directories in a pathname. You cannot use the null character.
+5. No need to use . (dot) in a filename. Some time dot improves readability of filenames. And you can use dot based filename extension to identify file. For example:
+        .sh = Shell file
+        .tar.gz = Compressed archive
+6. Most modern Linux and UNIX limit filename to 255 characters (255 bytes). However, some older version of UNIX system limits filenames to 14 characters only.
+7. A filename must be unique inside its directory. For example, inside /home/vivek directory you cannot create a demo.txt file and demo.txt directory name. However, other directory may have files with the same names. For example, you can create demo.txt directory in /tmp.
