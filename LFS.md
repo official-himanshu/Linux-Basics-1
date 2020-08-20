@@ -102,3 +102,21 @@ You may notice From the comparison above that Ext4 is the best Linux File System
         .tar.gz = Compressed archive
 6. Most modern Linux and UNIX limit filename to 255 characters (255 bytes). However, some older version of UNIX system limits filenames to 14 characters only.
 7. A filename must be unique inside its directory. For example, inside /home/vivek directory you cannot create a demo.txt file and demo.txt directory name. However, other directory may have files with the same names. For example, you can create demo.txt directory in /tmp.
+
+# ZFS and AUFS
+ ZFS = ZFS is a combined file system and logical volume manager. It includes support for high storage capacities, integration of concepts of file systems and volume management, snapshots and copy on write clones (that is, an optimization strategy that allows callers who ask for resources that are indistinguishable to be given pointers to the same resource), continuous integrity checking and automatic repair, RAID -Z, and native NFSv4 ACLs. It is an open source software that is licensed under the Common Development and Distribution License (or CDDL).
+ 
+ZFS is made up of a plethora of features and components. The storage pool of ZFS is known as a zpool. It is constructed of virtual devices (or vdevs) which are constructed of block devices – files, hard drive partitions or entire drives (recommended). As such, vdevs are often times considered to be a group of hard drives. A ZFS capacity is rather large in comparison to standard file systems. It is a 128 bit file system, enabling it to address 18 quintillion times more data than 64 bit systems. The limitations found in ZFS are designed specifically to be large enough to never be encountered (within the known limits of physics, and the number of atoms in the earth’s crust to construct a storage device of this magnitude). The other features include a copy on write transactional model, snapshots and clones, dynamic striping, variable block sizes, lightweight file system creation, cache management, adaptive endianness, and deduplication (to name a few of the more common features).
+
+AUFS = aufs (short for advanced multi-layered unification filesystem) implements a union mount for Linux file systems. The name originally stood for AnotherUnionFS until version 2.
+Aufs is included in Debian "jessie" and Ubuntu 16.04 out of the box. Debian "stretch" does not include aufs anymore, but provides a package aufs-dkms, which auto-compiles the aufs kernel module using Dell's dkms.
+
+Docker originally used aufs for container filesystem layers. It is still available as one of the supported storage backends.
+
+Several Linux distributions have chosen aufs as a replacement for UnionFS, including:
+1. ubuntu
+2. debain
+3. puppy Linux
+4. gentoo Linux etc.
+
+
