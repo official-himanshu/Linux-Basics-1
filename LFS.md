@@ -67,3 +67,27 @@ You can also use /tmp to store your own temporary files — /tmp is one of the f
 15. /var: /var was originally given its name because its contents was deemed variable, in that it changed frequently. Today it is a bit of a misnomer because there are many other directories that also contain data that changes frequently, especially the virtual directories we saw above.
 
 Be that as it may, /var contains things like logs in the /var/log subdirectories. Logs are files that register events that happen on the system. If something fails in the kernel, it will be logged in a file in /var/log; if someone tries to break into your computer from outside, your firewall will also log the attempt here. It also contains spools for tasks. These “tasks” can be the jobs you send to a shared printer when you have to wait because another user is printing a long document, or mail that is waiting to be delivered to users on the system.                                                                
+
+---------------------------------------------------------------------------------------------------------
+
+# File System
+
+Ext: an old one and no longer used due to limitations.
+
+Ext2: first Linux file system that allows 2 terabytes of data allowed.
+
+Ext3: came from Ext2, but with upgrades and backward compatibility.
+
+The only problem about it that the servers don’t use this kind of file system because this file system doesn’t support file recovery or disk snapshots.
+
+Ext4: faster and allow large files with significant speed.
+
+It is a very good option for SSD disks and you notice when you try to install any Linux distro that this one is the default file system that Linux suggests.
+
+JFS: old file system made by IBM. It works very well with small and big files, but it failed and files corrupted after long time use, reports say.
+
+XFS: old file system and works slowly with small files.
+
+Btrfs: made by Oracle. It is not stable as Ext in some distros, but you can say that it is a replacement for it if you have to. It has a good performance.
+
+You may notice From the comparison above that Ext4 is the best Linux File System
