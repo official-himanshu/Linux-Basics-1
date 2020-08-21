@@ -108,15 +108,36 @@ You may notice From the comparison above that Ext4 is the best Linux File System
  
 ZFS is made up of a plethora of features and components. The storage pool of ZFS is known as a zpool. It is constructed of virtual devices (or vdevs) which are constructed of block devices – files, hard drive partitions or entire drives (recommended). As such, vdevs are often times considered to be a group of hard drives. A ZFS capacity is rather large in comparison to standard file systems. It is a 128 bit file system, enabling it to address 18 quintillion times more data than 64 bit systems. The limitations found in ZFS are designed specifically to be large enough to never be encountered (within the known limits of physics, and the number of atoms in the earth’s crust to construct a storage device of this magnitude). The other features include a copy on write transactional model, snapshots and clones, dynamic striping, variable block sizes, lightweight file system creation, cache management, adaptive endianness, and deduplication (to name a few of the more common features).
 
-AUFS = aufs (short for advanced multi-layered unification filesystem) implements a union mount for Linux file systems. The name originally stood for AnotherUnionFS until version 2.
-Aufs is included in Debian "jessie" and Ubuntu 16.04 out of the box. Debian "stretch" does not include aufs anymore, but provides a package aufs-dkms, which auto-compiles the aufs kernel module using Dell's dkms.
+AUFS = AuFS stands for Another Union File System.
 
-Docker originally used aufs for container filesystem layers. It is still available as one of the supported storage backends.
+AuFS started as an implementation of UnionFS Union File System.
 
-Several Linux distributions have chosen aufs as a replacement for UnionFS, including:
-1. ubuntu
-2. debain
-3. puppy Linux
-4. gentoo Linux etc.
+An union filesystem takes an existing filesystem and transparently overlays it on a newer filesystem. It allows files and directories of separate filesystem to co-exist under a single roof. AuFS can merge several directories and provide a single merged view of it.
+
+AuFS is used in many of the opensource projects like, Slax, Knoppix, and many other live CD and live USB distributions.
+On Debian based systems, for example on Ubuntu, do the following to install aufs.
+
+-> apt-get install aufs-tools
+
+Example 1 – Understanding How AuFS Works
+This example shows how to mount two directories of a same filesystem.
+
+-> mkdir /tmp/dir1
+
+-> mkdir /tmp/aufs-root
+
+-> mount -t aufs -o br=/tmp/dir1:/home/lakshmanan none /tmp/aufs-root/
+The first two commands created 2 new directories. The mount.aufs is the command to mount the filesystem as Union mount.
+
+The mount command, specifies it is going to union mount “/tmp/dir1″ and /home/lakshmanan” under “/tmp/aufs-root”. The directory “/tmp/aufs-root” will have the content of both “/tmp/dir1” and “/home/lakshmanan”.
+
+The following options are used in the above mount command example:
+
+-o – specifies options to be passed to the filesystem
+br – specifies a branch, where each branch is separated by colon (:). A branch is nothing but a directory on a system.
+none – specifies we don’t have any device associated with it, since we are going to mount two directories
+
+for more visit -- https://www.thegeekstuff.com/2013/05/linux-aufs/
+
 
 
