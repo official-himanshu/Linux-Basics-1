@@ -21,4 +21,25 @@ ANS:-Secure Boot works like a security gate. Code with valid credentials gets th
       However, Secure Boot blocks at the gate and rejects a code that has bad credentials, or no credential. Intel® Desktop Boards embed the default Secure Boot keys for Windows 8*.
    
 # How will MBR knows which GRUB to load in dual boot?
-ANS: 
+ANS: First Possible Answer--
+      
+Grub will install itself to the master boot record of your drive. It's important to realize that the master boot record is the first sector of your partitioned drive, and not a partition itself. See http://en.wikipedia.org/wiki/Master_boot_record for more information
+
+Given this information, basically Grub will overwrite the MBR information that Windows 7 installed, but it won't touch the "System Reserved Partition" that Windows 7 creates (unless you ask it to). The new MBR will simply tell your system to load GRUB, and then GRUB will ensure that the proper OS is loaded. This makes it easy for you to switch between operating systems.
+
+Second Possible Answer--
+When Windows installs itself, it puts a bootloader (NTLDR in NT through XP; winboot after that) in the master boot record that reads boot.ini to show you the boot list. Once you pick something from that list, the bootloader's job is done, and the appropriate kernel is started from an actual partition on your drive.
+
+Grub does the same thing; the bootloader is only there to show the grub.conf/menu.lst list, and once you've picked something it transfers control to a regular partition. Thus grub will overwrite the NTLDR/winboot in the MBR, but not anything in a normal partition, and it knows how to transfer control to a Windows partition if you choose Windows from the boot list.
+
+# If Grub.conf is deleted, how an it be restored again?
+ANS:- So we can restored the grub file as follows:
+      first type command----ls /dev/sd*
+                             grub-install /dev/sda
+                             
+                             After that we need to configure this grub installation by using the command:
+                             grub-mkconfig -o /boot/grub/grub.cfg
+
+# Why are there hidden files on linux?
+ANS:- 
+                             
