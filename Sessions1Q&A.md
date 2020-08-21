@@ -80,4 +80,43 @@ ANS:- MANUAL SECTIONS
     https://unix.stackexchange.com/questions/3586/what-do-the-numbers-in-a-man-page-mean
 
 
+# How to create and mount ext4 file system?
+ANS:- CREATING AN EXT4 FILE SYSTEM
+      The steps for creating an ext4 file system are as follows:
+            1. Format the partition with the ext4 file system using the mkfs.ext4 or mke4fs command:
+                  ->  mkfs.ext4 block_device
+                              or
+                  -> mke4fs -t ext4 block_device
+                   block_device is the name of partition you want to create ext4 fs.
+                 
+            2. Label the partition using the e4label command.
+                  -> e4label <block_device> new-label
+            
+            3. Create a mount point and mount the new file system to that mount point:
+                  -> mkdir /mount/point
+                  -> mount block_device /mount/point
+      
+A valid block device could be one of two types of entries:
+    *A mapped device — A logical volume in a volume group, for example, /dev/mapper/VolGroup00-LogVol02.
+     *A static device — A traditional storage volume, for example, /dev/hdbX, where hdb is a storage device name and X is the partition number.
+     
+     To specify stripe geometry, use the -E option of mkfs.ext4 (that is, extended file system options) with the following sub-options:
+     ->  mkfs.ext4 -E stride=16,stripe-width=64 block_device
+
+   MOUNTING AN EXT4 FILE SYSTEM
+      An ext4 file system can be mounted with no extra options, same as any other file system:
+      
+      -> mount block_device /mount/point
+      
+      The default mount options are optimal for most users. Options, such as acl, noacl, data, quota, noquota, user_xattr, nouser_xattr, etc.
+      
+      - barrier / nobarrier
+            By default, ext4 uses write barriers to ensure file system integrity even when power is lost to a device with write caches enabled. For devices                   without write caches, or with battery-backed write caches, you disable barriers using the nobarrier option:
+                  -> mount -o nobarrier block_device /mount/point
+                  
+            Default mount options can be also set in the file system superblock using the tune4fs utility. For example, the following command sets the file system             on the /dev/mapper/VolGroup00-LogVol02 device to be mounted by default with debugging disabled and user-specified extended attributes and Posix access             control lists enabled:
+                  -> tune4fs -o ^debug,user_xattr,acl /dev/mapper/VolGroup00-LogVol02
+                  
+   https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/deployment_guide/s1-filesystem-ext4-create
+   https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/deployment_guide/s1-filesystem-ext4-mount.
                              
