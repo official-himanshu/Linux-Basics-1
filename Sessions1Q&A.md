@@ -39,7 +39,45 @@ ANS:- So we can restored the grub file as follows:
                              
                              After that we need to configure this grub installation by using the command:
                              grub-mkconfig -o /boot/grub/grub.cfg
+                             
 
 # Why are there hidden files on linux?
-ANS:- 
+ANS:- Hidden files, also called dot files on Unix operating systems, are files used in order to execute some scripts or to store configuration about some services on your host.
+In Linux,there are Hidden files that allow you to configure and export environment variables onto our working path.
+https://devconnected.com/how-to-show-hidden-files-on-linux/#:~:text=Hidden%20files%2C%20also%20called%20dot,stores%20user%20initialization%20scripts%20or%20.
+
+# Release cycle for Ubuntu.
+ANS:- Version numbers are YY.MM
+Releases of Ubuntu get a development codename (‘EoanErmine’) and are versioned by the year and month of delivery - for example, Ubuntu 19.10 was released in October 2019.
+LTS or ‘Long Term Support’ releases are published every two years in April. LTS releases are the ‘enterprise grade’ releases of Ubuntu and are utilised the most. An estimated 95% of all Ubuntu installations are LTS releases.
+
+Every six months between LTS versions, Canonical publishes an interim release of Ubuntu, with 19.10 being the latest example. These are production-quality releases and are supported for 9 months, with sufficient time provided for users to update, but these releases do not receive the long-term commitment of LTS releases.
+https://ubuntu.com/about/release-cycle#:~:text=Long%20term%20support%20and%20interim,Ubuntu%20installations%20are%20LTS%20releases.
+
+# Difference between Rolling release and Point release.
+ANS:- --Rolling release, rolling update, or continuous delivery, in software development, is the concept of frequently delivering updates to applications. This is in contrast to a standard or point release development model which uses software versions that must be reinstalled over the previous version.
+
+--A point release distribution puts out installation images on some sort of a fixed schedule, typically something like every six months, nine months or even annually. Each such release is identified by a specific name, which usually includes either the date or sequence number of the release. In most cases, between the major releases only security bug fixes and updates are made to the Linux kernel and desktop environment, but policies on utilities and applications vary between distributions. For example, most point release distributions continue to release new versions of Firefox.
+
+#  Why is man aggregated to man0, man1 etc.
+ANS:- MANUAL SECTIONS
+    The standard sections of the manual include:
+
+    1      User Commands
+    2      System Calls
+    3      C Library Functions
+    4      Devices and Special Files
+    5      File Formats and Conventions
+    6      Games et. al.
+    7      Miscellanea
+    8      System Administration tools and Daemons
+
+    Distributions customize the manual section to their specifics,
+    which often include additional sections.
+    
+    There are certain terms that have different pages in different sections (e.g. printf as a command appears in section 1, as a stdlib function appears in section 3); in cases like that you can pass the section number to man before the page name to choose which one you want.
+    
+    https://unix.stackexchange.com/questions/3586/what-do-the-numbers-in-a-man-page-mean
+
+
                              
