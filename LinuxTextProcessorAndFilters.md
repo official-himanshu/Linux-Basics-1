@@ -41,6 +41,55 @@ There are several command we can run in vim editor.
    -- we can perform several operations on the same file as permanentaly, or temporarily. Temporarily operation done using pipeline to be visible on terminal.
    -- we can also save the changes of file to other file also by just using > option.
    -- we can give operations in the form of regular expression as well.
+   
+# 4. GREP command
+   The grep filter searches a file for a particular pattern of characters, and displays all lines that contain that pattern. The pattern that is searched in the      file is referred to as the regular expression (grep stands for globally search for regular expression and print out).
+   Command look like as:-
+       grep [OPTIONS] PATTERN [FILE...]
+       grep [OPTIONS] -e PATTERN ... [FILE...]
+       grep [OPTIONS] -f FILE ... [FILE...]
+
+              
+      Options Description
+      -c : This prints only a count of the lines that match a pattern
+      -h : Display the matched lines, but do not display the filenames.
+      -i : Ignores, case for matching
+      -l : Displays list of a filenames only.
+      -n : Display the matched lines and their line numbers.
+      -v : This prints out all the lines that do not matches the pattern
+      -e exp : Specifies expression with this option. Can use multiple times.
+      -f file : Takes patterns from file, one per line.
+      -E : Treats pattern as an extended regular expression (ERE)
+      -w : Match whole word
+      -o : Print only the matched parts of a matching line,
+      -r : when we want to search all files in the same directory and its sub-directories then use this.
+      Displaying lines before/after/around the match using grep -A, -B and -C.
+      with each such part on a separate output line.
+      
+# 5. AWK Command
+Awk is a scripting language used for manipulating data and generating reports.The awk command programming language requires no compiling, and allows the user to use variables, numeric functions, string functions, and logical operators.
+Awk is a utility that enables a programmer to write tiny but effective programs in the form of statements that define text patterns that are to be searched for in each line of a document and the action that is to be taken when a match is found within a line. Awk is mostly used for pattern scanning and processing. It searches one or more files to see if they contain lines that matches with the specified patterns and then performs the associated actions.
+
+WHAT CAN WE DO WITH AWK ?
+
+1. AWK Operations:
+(a) Scans a file line by line
+(b) Splits each input line into fields
+(c) Compares input line/fields to pattern
+(d) Performs action(s) on matched lines
+
+2. Useful For:
+(a) Transform data files
+(b) Produce formatted reports
+
+3. Programming Constructs:
+(a) Format output lines
+(b) Arithmetic and string operations
+(c) Conditionals and loops
+
+
+      
+      
        
 
 
