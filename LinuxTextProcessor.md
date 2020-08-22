@@ -27,22 +27,20 @@ Vim is a text editor that is upwards compatible to Vi. It can be used to edit al
 There are several command we can run in vim editor.
 
 # 3. sed command
-       Sed  is a stream editor.  A stream editor is used to perform basic text
-       transformations on an input stream (a file or input from  a  pipeline).
-       While  in  some  ways similar to an editor which permits scripted edits
-       (such as ed), sed works by making only one pass over the input(s),  and
-       is consequently more efficient.  But it is sed's ability to filter text
-       in a pipeline which particularly distinguishes it from other  types  of
-       editors.
-       GIVING INPUT FILE DIRECTLY
+   Sed  is a stream editor.  A stream editor is used to perform basic text transformations on an input stream (a file or input from  a  pipeline).
+   While  in  some  ways similar to an editor which permits scripted edits (such as ed), sed works by making only one pass over the input(s),  and
+   is consequently more efficient.  But it is sed's ability to filter text in a pipeline which particularly distinguishes it from other  types  of
+   editors.
+        
+        GIVING INPUT FILE DIRECTLY
        ->sed [OPTIONS]... {script_only_if_no_other_script} [input-file]...
        
        GIVING INPUT FILE THROUGH PIPELINE
        -> cat [OPTIONS]... [filename]... | sed {{script_only_if_no_other_script} 
        
-       -- we can perform several operations on the same file as permanentaly, or temporarily. Temporarily operation done using pipeline to be visible on terminal.
-       -- we can also save the changes of file to other file also by just using > option.
-       -- we can give operations in the form of regular expression as well.
+   -- we can perform several operations on the same file as permanentaly, or temporarily. Temporarily operation done using pipeline to be visible on terminal.
+   -- we can also save the changes of file to other file also by just using > option.
+   -- we can give operations in the form of regular expression as well.
        
 
 
