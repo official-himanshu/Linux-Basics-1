@@ -8,7 +8,7 @@
    -> nano +line,columns file
    Search with regular expressions – press M-R (Alt + R keys) and input your search with the regular expressions you wish to use.
   1. Go to line – press ^T (Ctrl + T) followed by the line to which you want to move the cursor to.
-  2. Replace text – press ^R (Ctrl +T) in search mode, or ^\ in regular mode. You will be asked to enter your search, after pressing Enter, you will be asked to input the text which will be used for the replacement. Finally you will be asked if you wish to replace a matched instance of your search, or all matches. If you choose “No”, the cursor will be moved towards the next match.
+  2. Replace text – press ^R (Ctrl + R) in search mode, or ^\ in regular mode. You will be asked to enter your search, after pressing Enter, you will be asked to input the text which will be used for the replacement. Finally you will be asked if you wish to replace a matched instance of your search, or all matches. If you choose “No”, the cursor will be moved towards the next match.
   3. Go to first line – press ^Y (Ctrl + Y).
   4. Go to last line – press ^V (Ctrl +V).
   5. save using line - press ^O (Ctrl+O).
