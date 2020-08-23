@@ -142,6 +142,103 @@ The above command will apply all the specified operations in file.
     complete first line 
     complete last line
 
+#### 6. Reading Commands From a File
+We can save the sed commands in a file and apply them at once in any file. It can be done by specifying the '-f' option as follows:
+
+    sed -f <sed file> <file name> 
+    
+The above command will apply all the specified commands in the 'SedCommand' file.
+Here 'commandfile' is a file which contains script of sed command and 'file' is a simple file on which we apply script.
+
+    himanshu@himanshu:~$ cat >commandfile
+    s/deleting/complete/g;
+    $d
+    himanshu@himanshu:~$ sed -f commandfile file
+    hello
+    learn more and more to improve skills
+    keep hands one to know more.
+    complete a line by searching a specific word
+    complete by giving a specific line number
+    complete by giving a range
+    complete first line 
+
+#### 7. Transformation of Characters
+The 'y' flag is used to transform the characters. The transformation of characters cannot be limited to specific occurrences. To transform characters, execute the command as follows:
+
+    himanshu@himanshu:~$ cat alpha
+    abcdef
+    defabc
+    abcghi
+    acbedgf
+    himanshu@himanshu:~$ sed 'y/abc/xyz/' alpha
+    xyzdef
+    defxyz
+    xyzghi
+    xzyedgf
+    
+#### 8. Modifying Lines
+The 'c' flag is used to modify a specific line. To modify a line, execute the command as follows:
+
+    sed '<line no>c\<line>' <file name>
+    
+The above command will update the line three. Consider the below output:
+
+    himanshu@himanshu:~$ cat -n file
+     1	hello
+     2	learn more and more to improve skills
+     3	keep hands one to know more.
+     4	deleting a line by searching a specific word
+     5	deleting by giving a specific line number
+     6	deleting by giving a range
+     7	deleting first line 
+     8	deleting last line
+
+    himanshu@himanshu:~$ cat -n file | sed '4c Modified by a given line'
+     1	hello
+     2	learn more and more to improve skills
+     3	keep hands one to know more.
+     Modified by a given line
+     5	deleting by giving a specific line number
+     6	deleting by giving a range
+     7	deleting first line 
+     8	deleting last line
+     
+#### 9. Print line number with sed command
+The '=' sign or is used to print the line number. To print the line number, execute the command as follows:
+
+    sed '=' <file name>
+    
+The above command will display the line number of file content.
+
+    himanshu@himanshu:~$ sed = file
+    1
+    hello
+    2
+    learn more and more to improve skills
+    3
+    keep hands one to know more.
+    4
+    deleting a line by searching a specific word
+    5
+    deleting by giving a specific line number
+    6
+    deleting by giving a range
+    7
+    deleting first line 
+    8
+    deleting last line
+    
+    
+### Conclusion
+
+So we can use sed command for various stream editing and for easily modification of file. Also we can write this modification to a new file or we can modify the current file as well. This command is so useful in editing the scripts and a program.
+
+
+
+    
+
+
+    
 
 
 
