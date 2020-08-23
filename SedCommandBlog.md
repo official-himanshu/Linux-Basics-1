@@ -7,26 +7,26 @@ it is used for text substitution; additionally, it can be used for other text ma
 The sed command allows us to edit files without opening them. Regular expression support makes it a more powerful text manipulation tool.
 
 Basic sed command is given as:
-            
-        ->sed [OPTIONS]... {script_only_if_no_other_script} [input-file]...
-        ->echo <text> | sed {script_only_if_no_other_script}          //input from a pipeline
-        ->cat [input-file]... | sed {script_only_if_no_other_script}
+
+    ->sed [OPTIONS]... {script_only_if_no_other_script} [input-file]...
+    ->echo <text> | sed {script_only_if_no_other_script}          //input from a pipeline
+    ->cat [input-file]... | sed {script_only_if_no_other_script}
 
 Lets look at some command line option of sed command are:
 
-        -n, --quiet, --silent: It forcefully allows us to print of pattern space.
-        -e script, --expression=script: It is used to add the script to the commands to be executed.
-        -f script-file, --file=script-file: It is used to add the contents of script-file to the commands to be executed.
-        --follow-symlinks: it is used to follow symlinks when processing in place.
-        -i[SUFFIX], --in-place[=SUFFIX]: it is used to edit files in place (creates backup if SUFFIX option is supplied).
-        -l N, --line-length=N: It is used to specify the desired line-wrap length for the `l' command.
-        --posix: it is used to disable all GNU extensions.
-        -E, -r, --regexp-extended: It allows us to use the extended regular expressions in the script (for portability use POSIX -E).
-        -s, --separate: it is used for considering files as separate rather than as a single and continues the long stream.
-        -u, --unbuffered: It is used for loading the minimal amounts of data from the input files and flushes the output buffers more often.
-        -z, --null-data: It is used to separate lines by NUL characters.
-        --help: it is used to display the help manual.
-        --version: It is used to display version information.
+    -n, --quiet, --silent: It forcefully allows us to print of pattern space.
+    -e script, --expression=script: It is used to add the script to the commands to be executed.
+    -f script-file, --file=script-file: It is used to add the contents of script-file to the commands to be executed.
+    --follow-symlinks: it is used to follow symlinks when processing in place.
+    -i[SUFFIX], --in-place[=SUFFIX]: it is used to edit files in place (creates backup if SUFFIX option is supplied).
+    -l N, --line-length=N: It is used to specify the desired line-wrap length for the `l' command.
+    --posix: it is used to disable all GNU extensions.
+    -E, -r, --regexp-extended: It allows us to use the extended regular expressions in the script (for portability use POSIX -E).
+    -s, --separate: it is used for considering files as separate rather than as a single and continues the long stream.
+    -u, --unbuffered: It is used for loading the minimal amounts of data from the input files and flushes the output buffers more often.
+    -z, --null-data: It is used to separate lines by NUL characters.
+    --help: it is used to display the help manual.
+    --version: It is used to display version information.
             
 ### Sed Command Examples
 Let's look at some examples of sed command:
@@ -116,6 +116,32 @@ We can remove the line by finding match of word, delete by giving a specific lin
      7	deleting first line 
 
 #### 5. Using the Multiple sed Command
+The '-e' option allows us to execute the multiple sed commands at once. We can perform more than one sed operation by executing the command as:
+
+    sed -e '<script 1> ; <script 2>' <file name>  
+    sed -e '<script 1> -e <script 2> -e ... <file name>
+    
+The above command will apply all the specified operations in file.
+    
+    himanshu@himanshu:~$ cat file
+    hello
+    learn more and more to improve skills
+    keep hands one to know more.
+    deleting a line by searching a specific word
+    deleting by giving a specific line number
+    deleting by giving a range
+    deleting first line 
+    deleting last line
+    himanshu@himanshu:~$ cat file | sed -e 's/deleting/complete/g' -e 's/more/less/g'
+    hello
+    learn less and less to improve skills
+    keep hands one to know less.
+    complete a line by searching a specific word
+    complete by giving a specific line number
+    complete by giving a range
+    complete first line 
+    complete last line
+
 
 
 
