@@ -9,8 +9,6 @@ The sed command allows us to edit files without opening them. Regular expression
 Basic sed command is given as:
 
     ->sed [OPTIONS]... {script_only_if_no_other_script} [input-file]...
-    ->echo <text> | sed {script_only_if_no_other_script}          //input from a pipeline
-    ->cat [input-file]... | sed {script_only_if_no_other_script}
 
 Lets look at some command line option of sed command are:
 
