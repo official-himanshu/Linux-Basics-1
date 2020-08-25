@@ -6,6 +6,8 @@ used for automated processes and for implementing single sign-on by system admin
 An SSH key is an alternate way to identify yourself that doesn't require you to enter you username and password every time. SSH keys come in pairs, 
 a public key that gets shared with services like GitHub, and a private key that is stored only on your computer. If the keys match, you're granted access.
 
+###### The main use of key-based authentication is to enable secure automation. Automated secure shell file transfers are used to seamlessly integrate applications and also for automated systems & configuration management.
+
 In a nutshell:
 
 A pair of encryption keys are generated which are mathematically linked to each other: a private key and a public key. 
@@ -118,12 +120,12 @@ Example:
         
 #### Create a file ~/.ssh/authorized_keys  if already exist ignore this step
 
-        himanshu@himanshu$ vim .ssh/authorised_key
+        himanshu@himanshu$ vim .ssh/authorised_keys
         
 -Changes are made in file ~/.ssh/authorized_keys such as copy the pub in file ~/.ssh/authorized_keys on the machine to which you want to connect, appending it to its end if the file already exists.
 -And Change the permissions of the ~/.ssh/authorized_keys file using the following command:
 
-        himanshu@himanshu$ chmod 600 ~/.ssh/authorized_key
+        himanshu@himanshu$ chmod 600 ~/.ssh/authorized_keys
         
 #### USING KEY-BASED AUTHENTICATION
 To improve the system security even further, you can enforce key-based authentication by disabling the standard password authentication. To do so, open the /etc/ssh/sshd_config configuration file in a text editor such as vim, and change or uncomment if exist the option as follows:
@@ -145,6 +147,78 @@ To improve the system security even further, you can enforce key-based authentic
 #### Now access the server by ssh through pem file ( without password ) from local.
 
          ssh –i <path to pem file(test.pem)> <user>himanshu@<IP> 
+
+### What is SSH?
+The SSH protocol (also referred to as Secure Shell) is a method for secure remote login from one computer to another. It provides several alternative options for strong authentication, and it protects the communications security and integrity with strong encryption. It is a secure alternative to the non-protected login protocols (such as telnet, rlogin) and insecure file transfer methods (such as FTP).
+
+#### Typical uses of the SSH protocol
+The protocol is used in corporate networks for:
+
+providing secure access for users and automated processes
+
+interactive and automated file transfers
+
+issuing remote commands
+
+managing network infrastructure and other mission-critical system components.
+
+#### How does the ssh protocol work?
+-> The protocol works in the client-server model, which means that the connection is established by the SSH client connecting to the SSH server. 
+-> The SSH client drives the connection setup process and uses public key cryptography to verify the identity of the SSH server.
+->  After the setup phase the SSH protocol uses strong symmetric encryption and hashing algorithms to ensure the privacy and integrity of the data that is exchanged between the client and server.
+
+Now simple process of ssh--
+- Client initiate the connection by contacting the server.
+- SSH server sends public key to the client.
+- both client and server negotiate parameters and open secure parameters.
+- User login to server host operating system.
+
+#### SSH provides strong encryption and integrity protection
+Once a connection has been established between the SSH client and server, the data that is transmitted is encrypted according to the parameters negotiated in the setup. During the negotiation the client and server agree on the symmetric encryption algorithm to be used and generate the encryption key that will be used. The traffic between the communicating parties is protected with industry standard strong encryption algorithms (such as AES (Advanced Encryption Standard)), and the SSH protocol also includes a mechanism that ensures the integrity of the transmitted data by using standard hash algoritms (such as SHA-2 (Standard Hashing Algorithm)).
+
+#### What is known host in SSH?
+The known_hosts file is for verifying the identity of other systems. ssh(1) can automatically add keys to the user's file, but they can be added manually as well. The file contains a list of public keys for all the hosts which the user has connected to.
+
+#### /etc/ssh/ssh_config
+This file defines all the default settings for the client utilities for all users on that system. It must be readable by all users. The configuration options are described in detail in ssh_config(5).
+
+#### /etc/ssh/ssh_known_hosts
+This contains the system-wide list of known host keys used to verify the identity of the remote host and thus hinder impersonation or eavesdropping. This file should be prepared by the system administrator to contain the public host keys of all necessary hosts. It should be world-readable.
+
+#### Client-Side Files
+These files reside on the client machine.
+
+
+##### ~/.ssh/config
+The user's own configuration file which, where applicable, overrides the settings in the global client configuration file, /etc/ssh/ssh_config. The configuration options are described in detail in ssh_config(5).
+
+This file must not be accessible to other users in any way. Set strict permissions: read/write for the user, and not accessible by others. It may group-writable if and only if that user is the only member of the group in question.
+
+##### ~/.ssh/known_hosts
+This file is local to the user account and contains the known keys for remote hosts. Often these are collected from the hosts when connecting for the first time, but they can be added manually. As with those keys stored in the global file, /etc/ssh/ssh_known_hosts, these keys are used to verify the identity of the remote host, thus protecting against impersonation or man-in-the-middle attacks. With each subsequent connection the key will be compared to the key provided by the remote server. If there is a match, the connection will proceed. If the match fails, ssh(1) will fail with an error message. If there is no key at all listed for that remote host, then the key's fingerprint will be displayed and there will be the option to automatically add the key to the file. This file can be created and edited manually, but if it does not exist it will be created automatically by ssh(1) when it first connects to a remote host.
+
+The ~/.ssh/known_hosts file can use either hashed or clear text host names. Even with hashed names, it can still be searched using ssh-keygen(1) using the -F option.
+
+    $ ssh-keygen -F server3.example.com
+The default file to be searched will be ~/.ssh/known_hosts and the key is printed if found. A different file can be searched using the -f option. If a key must be removed from the file, the -R option works similarly to search by host and then remove it if found even if the host name is hashed.
+
+    $ ssh-keygen -R server4.example.com -f ~/.ssh/known_hosts
+When a key is removed, it will then be appended to the file ~/.ssh/known_hosts.old in case it is needed later. Again, see the manual page for sshd(8) for the format of these known_host files.
+
+#### Server side Client Files
+These client files reside on the server. By default they are kept in the user's directory. However, the server can be configured to look for them in other locations if needed.
+
+#### ~/.ssh/authorized_keys
+authorized_keys is a one-key-per-line register of public ECDSA, RSA, and ED25519 keys that this account can use to log in with. The file's contents are not highly sensitive, but the recommended permissions are read/write for the user and not accessible by others. As always, the whole key including options and comments must be on a single, unbroken line.
+
+#### What is sshd?
+sshd (OpenSSH Daemon) is the daemon program for ssh(1).  Together these
+programs replace rlogin and rsh, and provide secure encrypted communications between two untrusted hosts over an insecure network.
+
+sshd listens for connections from clients.  It is normally started at boot from /etc/init.d/ssh.  It forks a new daemon for each incoming connection.
+The forked daemons handle key exchange, encryption, authentication, command execution, and data exchange.
+
+The sshd process is started when the system boots. The program is usually located at /usr/sbin/sshd. It runs as root. The initial process acts as the master server that listens to incoming connections. Generally this process is the one with the lowest process id or the one that has been running the longest. It is also the parent process of all the other sshd processes. The following command can be used to display the process tree on Linux, and it is easy to see which one is the parent process.
 
 
                                
