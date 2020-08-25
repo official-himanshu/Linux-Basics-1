@@ -352,6 +352,36 @@ Typical use
     awk '! /test/ { print $2 }' file.txt
     In-place editing: -i (GNU awk 4.1.0 or later…)
 
+##### Splitting a Line Into Fields 
+For each record i.e line, the awk command splits the record delimited by whitespace character by default and stores it in the $n variables. If the line has 4 words, it will be stored in $1, $2, $3 and $4 respectively. Also, $0 represents the whole line.
+
+    $ awk '{print $1,$4}' emp.txt 
+Output:
+    
+    ajay 45000 
+    sunil 25000 
+    varun 50000 
+    amit 47000 
+    tarun 15000 
+    deepak 23000 
+    sunil 13000 
+    satvik 80000 
+    
+In the above example, $1 and $4 represents Name and Salary fields respectively.
+
+##### Print the lines which matches with the given pattern
+Command:
+
+    $ awk '/manager/ {print}' emp.txt 
+Output:
+
+    ajay manager account 45000 
+    varun manager sales 50000 
+    amit manager account 47000 
+
+In the above example, the awk command prints all the line which matches with the ‘manager’.
+
+
 #### Difference between sed, awk and grep
 
 Awk is a programming language that is strictly focused on pattern matching and reporting from text files. GNU awk has taken things to a whole new level. Learning awk is mostly good for historical value and working on old code.
