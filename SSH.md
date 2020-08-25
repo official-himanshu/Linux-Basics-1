@@ -220,5 +220,24 @@ The forked daemons handle key exchange, encryption, authentication, command exec
 
 The sshd process is started when the system boots. The program is usually located at /usr/sbin/sshd. It runs as root. The initial process acts as the master server that listens to incoming connections. Generally this process is the one with the lowest process id or the one that has been running the longest. It is also the parent process of all the other sshd processes. The following command can be used to display the process tree on Linux, and it is easy to see which one is the parent process.
 
+#### What is SCP (Secure Copy Protocol)?
+The Secure Copy Protocol or “SCP” helps to transfer computer files securely from a local to a remote host. It is somewhat similar to the File Transfer Protocol “FTP”, but it adds security and authentication.
 
+The SCP runs on Port 22, and some people say that it’s a combination of the BSD RCP and the SSH protocol.
+
+The RCP is used to transfer the files, and the SSH protocol provides authentication and encryption, so SCP can be considered a mixture of these two protocols.
+
+The data that is being transferred remains confidential, so the SCP can be used to successfully block packet sniffers that can extract valuable information from the data packets.
+
+The SCP can also benefit from using SSH because it allows the inclusion of permissions and timestamps for the file that needs to be uploaded.
+
+#### How to use SCP?
+
+The SCP client can upload files to the SSH server or request files and directories for downloading.
+
+The server, in return, sends all the subdirectories and the files that are available for download. Note that, the server controls the file downloads so there can be security risks if the client is unintentionally connected to a malicious server.
+
+SCP is a native command in most Operating Systems, such as MacOS, Windows, or Linux.
+
+You can find it just by entering the “scp” command on the terminal line. But you can also find it in common network file transfer applications, such as PuTTy (ExtraPuTTy).
                                
