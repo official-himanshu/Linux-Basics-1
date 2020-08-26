@@ -14,5 +14,7 @@ The steps for creating a ext4 file system are as followa:
 
 1. Format the partition with the ext4 file system using the mkfs.ext4 or mke4fs command:
 
-    ~]# mkfs.ext4 block_device 
+        ~]# mkfs.ext4 block_device 
+        ~]# mke4fs.ext4 block_device
+
 
