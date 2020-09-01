@@ -33,7 +33,7 @@ PERCENT=30
 #          Beginning of Main                                   #
 # test for command line arguement is present
 if [[ $# -le 0 ]]
-then
+then 
     printf "Using default value for threshold!\n"
 # test if argument is an integer
 # if it is, use that as percent, if not use default
