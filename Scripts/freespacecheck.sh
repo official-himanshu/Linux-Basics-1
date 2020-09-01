@@ -29,3 +29,4 @@ do
         echo "WARNING: The partition \"$p\" has used $used% of total available space - Date: $(date)"
     fi
 done
+ 
