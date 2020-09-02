@@ -17,3 +17,7 @@ we can modify these objects on the same memory reference.
 Numbers, strings, and tuples are immutable. Lists, dictionaries, and sets are mutable, as are most new objects you’ll code with classes.
 Immutability may be used to ensure that an object remains constant throughout your program. The values of mutable objects can be changed at any time and place, whether you expect it or not.
 You can change a single value of a mutable data type and it won’t change its memory address. However, you can’t change a single value of an immutable type. It will throw an error.
+
+
+for more visit here:
+https://medium.com/datadriveninvestor/mutable-and-immutable-python-2093deeac8d9#:~:text=Numbers%2C%20strings%2C%20and%20tuples%20are,remains%20constant%20throughout%20your%20program.
